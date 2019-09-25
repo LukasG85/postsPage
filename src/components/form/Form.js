@@ -1,98 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { IoIosArrowForward } from "react-icons/io";
 import Error from "./Error";
-
-let message = "";
-let errors = [];
+import useForm from "../hooks/useForm";
 
 const Form = () => {
-  const [value, setValue] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    postcode: "",
-    place: "",
-    street: "",
-    houseNumber: "",
-    apartmentNumber: "",
-    checkbox1: false,
-    checkbox2: false,
-    checkbox3: false,
-    checkbox4: false,
-    sendForm: false
-  });
-
-  const handleChange = (e, fieldName, checkbox) => {
-    setValue({
-      ...value,
-      [fieldName]: checkbox ? e.target.checked : e.target.value
-    });
-  };
-
-  const selectAllCheckbox = e => {
-    setValue({
-      ...value,
-      checkbox1: e.target.checked,
-      checkbox2: e.target.checked,
-      checkbox3: e.target.checked,
-      checkbox4: e.target.checked
-    });
-  };
-
-  const formValidate = value => {
-    if (!value.name.includes(" ")) {
-      errors.push("Podaj imię i nazwisko");
-      return false;
-    }
-
-    if (value.houseNumber === "" && value.apartmentNumber === "") {
-      errors.push("Podaj numer domu lub lokalu");
-      return false;
-    }
-    errors = [];
-
-    if (errors.length <= 0) {
-      return true;
-    }
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-
-    setValue({ ...value, sendForm: true });
-
-    if (formValidate(value)) {
-      formValidate(value);
-      setValue({
-        name: "",
-        email: "",
-        phone: "",
-        postcode: "",
-        place: "",
-        street: "",
-        houseNumber: "",
-        apartmentNumber: "",
-        checkbox1: false,
-        checkbox2: false,
-        checkbox3: false,
-        checkbox4: false,
-        sendForm: false
-      });
-      message = "Fromularz Wysłany";
-    } else {
-      return errors;
-    }
-  };
+  const [
+    values,
+    handleChange,
+    selectAllCheckbox,
+    handleCheckbox,
+    handleSubmit,
+    errors,
+    message
+  ] = useForm();
 
   return (
-    <FormWrapper value={value}>
+    <FormWrapper value={values}>
       <div className="container">
         <h2>wypełnij formularz</h2>
-        <form onSubmit={e => handleSubmit(e)}>
+        <form onSubmit={handleSubmit}>
           <input
-            value={value.name}
-            onChange={e => handleChange(e, "name")}
+            value={values.name}
+            onChange={handleChange}
             type="text"
             name="name"
             placeholder="* Imię i nazwisko"
@@ -101,8 +31,8 @@ const Form = () => {
             pattern="([A-Za-zĄąĘęŹźŻżŚśÓóĆćŃńŁł ]+)"
           />
           <input
-            value={value.email}
-            onChange={e => handleChange(e, "email")}
+            value={values.email}
+            onChange={handleChange}
             type="email"
             name="email"
             placeholder="* E-mail"
@@ -110,18 +40,18 @@ const Form = () => {
             required
           />
           <input
-            value={value.phone}
-            onChange={e => handleChange(e, "phone")}
-            type="number"
+            value={values.phone}
+            onChange={handleChange}
+            type="tel"
             name="phone"
             placeholder="* Nr telefonu"
             className="text-input"
             required
-            pattern="[0-9]{3} [0-9]{3} [0-9]{3}"
+            pattern="[0-9]{9}"
           />
           <input
-            value={value.postcode}
-            onChange={e => handleChange(e, "postcode")}
+            value={values.postcode}
+            onChange={handleChange}
             type="text"
             name="postcode"
             placeholder="* Kod pocztowy"
@@ -130,8 +60,8 @@ const Form = () => {
             pattern="[0-9]{2}-[0-9]{3}"
           />
           <input
-            value={value.place}
-            onChange={e => handleChange(e, "place")}
+            value={values.place}
+            onChange={handleChange}
             type="text"
             name="place"
             placeholder="* Miejscowość"
@@ -140,8 +70,8 @@ const Form = () => {
             pattern="[a-zA-Z0-9]+"
           />
           <input
-            value={value.street}
-            onChange={e => handleChange(e, "street")}
+            value={values.street}
+            onChange={handleChange}
             type="text"
             name="street"
             placeholder="* Ulica"
@@ -150,20 +80,21 @@ const Form = () => {
             pattern="[a-zA-Z0-9]+"
           />
           <input
-            value={value.houseNumber}
-            onChange={e => handleChange(e, "houseNumber")}
+            value={values.houseNumber}
+            onChange={handleChange}
             type="number"
             name="houseNumber"
             placeholder="* Nr domu"
             className="text-input"
+            required
             pattern="[0-9]"
           />
           <input
-            value={value.apartmentNumber}
-            onChange={e => handleChange(e, "apartmentNumber")}
+            value={values.apartmentNumber}
+            onChange={handleChange}
             type="number"
             name="apartmentNumber"
-            placeholder="* Nr lokalu"
+            placeholder="Nr lokalu"
             className="text-input"
             pattern="[0-9]"
           />
@@ -184,13 +115,13 @@ const Form = () => {
 
           <div className="checkbox-container">
             <input
-              value={value.checkbox1}
-              onChange={e => handleChange(e, "checkbox1", "checkbox")}
+              value={values.checkbox1}
+              onChange={handleCheckbox}
               id="checkbox-1"
               className="checkbox-custom"
               name="checkbox1"
               type="checkbox"
-              checked={value.checkbox1}
+              checked={values.checkbox1}
             />
             <label htmlFor="checkbox-1" className="checkbox-custom-label">
               <span>
@@ -205,13 +136,13 @@ const Form = () => {
 
           <div className="checkbox-container">
             <input
-              value={value.checkbox2}
-              onChange={e => handleChange(e, "checkbox2", "checkbox")}
+              value={values.checkbox2}
+              onChange={handleCheckbox}
               id="checkbox-2"
               className="checkbox-custom"
-              name="checkbox-2"
+              name="checkbox2"
               type="checkbox"
-              checked={value.checkbox2}
+              checked={values.checkbox2}
             />
             <label htmlFor="checkbox-2" className="checkbox-custom-label">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -229,13 +160,13 @@ const Form = () => {
 
           <div className="checkbox-container">
             <input
-              value={value.checkbox3}
-              onChange={e => handleChange(e, "checkbox3", "checkbox")}
+              value={values.checkbox3}
+              onChange={handleCheckbox}
               id="checkbox-3"
               className="checkbox-custom"
-              name="checkbox-3"
+              name="checkbox3"
               type="checkbox"
-              checked={value.checkbox3}
+              checked={values.checkbox3}
             />
             <label htmlFor="checkbox-3" className="checkbox-custom-label">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -244,13 +175,13 @@ const Form = () => {
           </div>
           <div className="checkbox-container">
             <input
-              value={value.checkbox4}
-              onChange={e => selectAllCheckbox(e)}
+              value={values.checkbox4}
+              onChange={selectAllCheckbox}
               id="checkbox-4"
               className="checkbox-custom"
               name="checkbox-4"
               type="checkbox"
-              checked={value.checkbox4}
+              checked={values.checkbox4}
             />
             <label htmlFor="checkbox-4" className="checkbox-custom-label">
               Zaznacz wszystko
