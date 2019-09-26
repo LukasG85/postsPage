@@ -16,22 +16,20 @@ const useForm = () => {
     checkbox1: false,
     checkbox2: false,
     checkbox3: false,
-    checkbox4: false,
-    sendForm: false
+    checkbox4: false
+  });
+
+  const [formStatus, setFormStatus] = useState({
+    sendForm: false,
+    error: false
   });
 
   const handleChange = e => {
     e.persist();
     setValue({
       ...value,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleCheckbox = e => {
-    setValue({
-      ...value,
-      [e.target.name]: e.target.checked
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value
     });
   };
 
@@ -60,7 +58,7 @@ const useForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    setValue({ ...value, sendForm: true });
+    setFormStatus({ ...formStatus, error: true });
 
     if (formValidate(value)) {
       formValidate(value);
@@ -76,9 +74,10 @@ const useForm = () => {
         checkbox1: false,
         checkbox2: false,
         checkbox3: false,
-        checkbox4: false,
-        sendForm: false
+        checkbox4: false
       });
+      setFormStatus({ sendForm: true, error: false });
+
       message = "Fromularz Wysłany";
     } else {
       return errors;
@@ -89,7 +88,7 @@ const useForm = () => {
     value,
     handleChange,
     selectAllCheckbox,
-    handleCheckbox,
+    formStatus,
     handleSubmit,
     errors,
     message

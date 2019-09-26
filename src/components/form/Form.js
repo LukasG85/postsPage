@@ -9,7 +9,7 @@ const Form = () => {
     values,
     handleChange,
     selectAllCheckbox,
-    handleCheckbox,
+    formStatus,
     handleSubmit,
     errors,
     message
@@ -29,6 +29,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="([A-Za-zĄąĘęŹźŻżŚśÓóĆćŃńŁł ]+)"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.email}
@@ -38,6 +39,7 @@ const Form = () => {
             placeholder="* E-mail"
             className="text-input"
             required
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.phone}
@@ -48,6 +50,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="[0-9]{9}"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.postcode}
@@ -58,6 +61,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="[0-9]{2}-[0-9]{3}"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.place}
@@ -68,6 +72,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="[a-zA-Z0-9]+"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.street}
@@ -78,6 +83,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="[a-zA-Z0-9]+"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.houseNumber}
@@ -88,6 +94,7 @@ const Form = () => {
             className="text-input"
             required
             pattern="[0-9]"
+            disabled={formStatus.sendForm}
           />
           <input
             value={values.apartmentNumber}
@@ -97,6 +104,7 @@ const Form = () => {
             placeholder="Nr lokalu"
             className="text-input"
             pattern="[0-9]"
+            disabled={formStatus.sendForm}
           />
 
           {errors.length > 0 ? <Error errors={errors} /> : null}
@@ -116,12 +124,13 @@ const Form = () => {
           <div className="checkbox-container">
             <input
               value={values.checkbox1}
-              onChange={handleCheckbox}
+              onChange={handleChange}
               id="checkbox-1"
               className="checkbox-custom"
               name="checkbox1"
               type="checkbox"
               checked={values.checkbox1}
+              disabled={formStatus.sendForm}
             />
             <label htmlFor="checkbox-1" className="checkbox-custom-label">
               <span>
@@ -137,12 +146,13 @@ const Form = () => {
           <div className="checkbox-container">
             <input
               value={values.checkbox2}
-              onChange={handleCheckbox}
+              onChange={handleChange}
               id="checkbox-2"
               className="checkbox-custom"
               name="checkbox2"
               type="checkbox"
               checked={values.checkbox2}
+              disabled={formStatus.sendForm}
             />
             <label htmlFor="checkbox-2" className="checkbox-custom-label">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -161,12 +171,13 @@ const Form = () => {
           <div className="checkbox-container">
             <input
               value={values.checkbox3}
-              onChange={handleCheckbox}
+              onChange={handleChange}
               id="checkbox-3"
               className="checkbox-custom"
               name="checkbox3"
               type="checkbox"
               checked={values.checkbox3}
+              disabled={formStatus.sendForm}
             />
             <label htmlFor="checkbox-3" className="checkbox-custom-label">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -182,6 +193,7 @@ const Form = () => {
               name="checkbox-4"
               type="checkbox"
               checked={values.checkbox4}
+              disabled={formStatus.sendForm}
             />
             <label htmlFor="checkbox-4" className="checkbox-custom-label">
               Zaznacz wszystko
