@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/LukasG85/postsPage/static/css/main.8d0e90a6.chunk.css",
-    "main.js": "/LukasG85/postsPage/static/js/main.66d12f9a.chunk.js",
-    "main.js.map": "/LukasG85/postsPage/static/js/main.66d12f9a.chunk.js.map",
-    "runtime-main.js": "/LukasG85/postsPage/static/js/runtime-main.eddee52d.js",
-    "runtime-main.js.map": "/LukasG85/postsPage/static/js/runtime-main.eddee52d.js.map",
-    "static/css/2.266e55a5.chunk.css": "/LukasG85/postsPage/static/css/2.266e55a5.chunk.css",
-    "static/js/2.34c495b3.chunk.js": "/LukasG85/postsPage/static/js/2.34c495b3.chunk.js",
-    "static/js/2.34c495b3.chunk.js.map": "/LukasG85/postsPage/static/js/2.34c495b3.chunk.js.map",
-    "index.html": "/LukasG85/postsPage/index.html",
-    "precache-manifest.a8be9f721d98b77eeef7d59ee241a14f.js": "/LukasG85/postsPage/precache-manifest.a8be9f721d98b77eeef7d59ee241a14f.js",
-    "service-worker.js": "/LukasG85/postsPage/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/LukasG85/postsPage/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.8d0e90a6.chunk.css.map": "/LukasG85/postsPage/static/css/main.8d0e90a6.chunk.css.map",
-    "static/media/Banner.jpg": "/LukasG85/postsPage/static/media/Banner.811ad7c4.jpg",
-    "static/media/car.jpg": "/LukasG85/postsPage/static/media/car.872183ea.jpg",
-    "static/media/logo.svg": "/LukasG85/postsPage/static/media/logo.5ff1a11a.svg"
+    "main.css": "/postsPage/static/css/main.8d0e90a6.chunk.css",
+    "main.js": "/postsPage/static/js/main.6bb77310.chunk.js",
+    "main.js.map": "/postsPage/static/js/main.6bb77310.chunk.js.map",
+    "runtime-main.js": "/postsPage/static/js/runtime-main.3412377d.js",
+    "runtime-main.js.map": "/postsPage/static/js/runtime-main.3412377d.js.map",
+    "static/css/2.266e55a5.chunk.css": "/postsPage/static/css/2.266e55a5.chunk.css",
+    "static/js/2.8bcecb8c.chunk.js": "/postsPage/static/js/2.8bcecb8c.chunk.js",
+    "static/js/2.8bcecb8c.chunk.js.map": "/postsPage/static/js/2.8bcecb8c.chunk.js.map",
+    "index.html": "/postsPage/index.html",
+    "precache-manifest.726b7dbab4917fba9c506dbbef78aac9.js": "/postsPage/precache-manifest.726b7dbab4917fba9c506dbbef78aac9.js",
+    "service-worker.js": "/postsPage/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/postsPage/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.8d0e90a6.chunk.css.map": "/postsPage/static/css/main.8d0e90a6.chunk.css.map",
+    "static/media/Banner.jpg": "/postsPage/static/media/Banner.811ad7c4.jpg",
+    "static/media/car.jpg": "/postsPage/static/media/car.872183ea.jpg",
+    "static/media/logo.svg": "/postsPage/static/media/logo.5ff1a11a.svg"
   }
 }
